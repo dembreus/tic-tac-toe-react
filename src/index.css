@@ -12,6 +12,11 @@ ol, ul {
     content: "";
     display: table;
 }
+.board-grid:after {
+    clear: both;
+    content: "";
+    display: table;
+}
 
 .status {
     margin-bottom: 10px;

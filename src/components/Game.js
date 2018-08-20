@@ -3,18 +3,16 @@ import calculateWinner from "./calculateWinner";
 import Board from "./Board";
 
 class Game extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            history: [{
-                squares: Array(9).fill(null)
-            }],
-            stepNumber: 0,
-            xIsNext: true
-        };
-    }
+    state = {
+        history: [{
+            // squares: Array(n).fill(Array(n).fill(n))
+            squares: Array(9).fill(null)
+        }],
+        stepNumber: 0,
+        xIsNext: true
+    };
 
-    handleClick(i) {
+    handleClick = async i => {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
@@ -29,7 +27,7 @@ class Game extends React.Component {
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext,
         });
-    }
+    };
 
     jumpTo(step){
         this.setState({
@@ -52,7 +50,7 @@ class Game extends React.Component {
                     <button onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             )
-        })
+        });
 
         let status;
         if (winner) {
